@@ -1,0 +1,1864 @@
+input PersonRelateToManyInput {
+  create: [PersonCreateInput]
+  connect: [PersonWhereUniqueInput]
+  disconnect: [PersonWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input CrimeRelateToManyInput {
+  create: [CrimeCreateInput]
+  connect: [CrimeWhereUniqueInput]
+  disconnect: [CrimeWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input OfferRelateToManyInput {
+  create: [OfferCreateInput]
+  connect: [OfferWhereUniqueInput]
+  disconnect: [OfferWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input RequestRelateToManyInput {
+  create: [RequestCreateInput]
+  connect: [RequestWhereUniqueInput]
+  disconnect: [RequestWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input ExchangeRelateToManyInput {
+  create: [ExchangeCreateInput]
+  connect: [ExchangeWhereUniqueInput]
+  disconnect: [ExchangeWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+input PictureRelateToOneInput {
+  create: PictureCreateInput
+  connect: PictureWhereUniqueInput
+  disconnect: PictureWhereUniqueInput
+  disconnectAll: Boolean
+}
+
+""" A keystone list """
+type Person {
+  id: ID!
+  firstName: String
+  lastName: String
+  email: String
+  password_is_set: Boolean
+  home: String
+  signUpDate: String
+  companions(where: PersonWhereInput, search: String, sortBy: [SortPeopleBy!], orderBy: String, first: Int, skip: Int): [Person!]!
+  _companionsMeta(where: PersonWhereInput, search: String, sortBy: [SortPeopleBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  crimes(where: CrimeWhereInput, search: String, sortBy: [SortCrimesBy!], orderBy: String, first: Int, skip: Int): [Crime!]!
+  _crimesMeta(where: CrimeWhereInput, search: String, sortBy: [SortCrimesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  offers(where: OfferWhereInput, search: String, sortBy: [SortOffersBy!], orderBy: String, first: Int, skip: Int): [Offer!]!
+  _offersMeta(where: OfferWhereInput, search: String, sortBy: [SortOffersBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  requests(where: RequestWhereInput, search: String, sortBy: [SortRequestsBy!], orderBy: String, first: Int, skip: Int): [Request!]!
+  _requestsMeta(where: RequestWhereInput, search: String, sortBy: [SortRequestsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  exchange(where: ExchangeWhereInput, search: String, sortBy: [SortExchangesBy!], orderBy: String, first: Int, skip: Int): [Exchange!]!
+  _exchangeMeta(where: ExchangeWhereInput, search: String, sortBy: [SortExchangesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  message: String
+  profilePhoto: Picture
+  passwordResetToken_is_set: Boolean
+  passwordResetIssuedAt: String
+  passwordResetRedeemedAt: String
+  magicAuthToken_is_set: Boolean
+  magicAuthIssuedAt: String
+  magicAuthRedeemedAt: String
+}
+
+input PersonWhereInput {
+  AND: [PersonWhereInput]
+  OR: [PersonWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  firstName: String
+  firstName_not: String
+  firstName_contains: String
+  firstName_not_contains: String
+  firstName_starts_with: String
+  firstName_not_starts_with: String
+  firstName_ends_with: String
+  firstName_not_ends_with: String
+  firstName_i: String
+  firstName_not_i: String
+  firstName_contains_i: String
+  firstName_not_contains_i: String
+  firstName_starts_with_i: String
+  firstName_not_starts_with_i: String
+  firstName_ends_with_i: String
+  firstName_not_ends_with_i: String
+  firstName_in: [String]
+  firstName_not_in: [String]
+  lastName: String
+  lastName_not: String
+  lastName_contains: String
+  lastName_not_contains: String
+  lastName_starts_with: String
+  lastName_not_starts_with: String
+  lastName_ends_with: String
+  lastName_not_ends_with: String
+  lastName_i: String
+  lastName_not_i: String
+  lastName_contains_i: String
+  lastName_not_contains_i: String
+  lastName_starts_with_i: String
+  lastName_not_starts_with_i: String
+  lastName_ends_with_i: String
+  lastName_not_ends_with_i: String
+  lastName_in: [String]
+  lastName_not_in: [String]
+  email: String
+  email_not: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  email_i: String
+  email_not_i: String
+  email_contains_i: String
+  email_not_contains_i: String
+  email_starts_with_i: String
+  email_not_starts_with_i: String
+  email_ends_with_i: String
+  email_not_ends_with_i: String
+  email_in: [String]
+  email_not_in: [String]
+  password_is_set: Boolean
+  home: String
+  home_not: String
+  home_contains: String
+  home_not_contains: String
+  home_starts_with: String
+  home_not_starts_with: String
+  home_ends_with: String
+  home_not_ends_with: String
+  home_i: String
+  home_not_i: String
+  home_contains_i: String
+  home_not_contains_i: String
+  home_starts_with_i: String
+  home_not_starts_with_i: String
+  home_ends_with_i: String
+  home_not_ends_with_i: String
+  home_in: [String]
+  home_not_in: [String]
+  signUpDate: String
+  signUpDate_not: String
+  signUpDate_lt: String
+  signUpDate_lte: String
+  signUpDate_gt: String
+  signUpDate_gte: String
+  signUpDate_in: [String]
+  signUpDate_not_in: [String]
+
+  """ condition must be true for all nodes """
+  companions_every: PersonWhereInput
+
+  """ condition must be true for at least 1 node """
+  companions_some: PersonWhereInput
+
+  """ condition must be false for all nodes """
+  companions_none: PersonWhereInput
+
+  """ condition must be true for all nodes """
+  crimes_every: CrimeWhereInput
+
+  """ condition must be true for at least 1 node """
+  crimes_some: CrimeWhereInput
+
+  """ condition must be false for all nodes """
+  crimes_none: CrimeWhereInput
+
+  """ condition must be true for all nodes """
+  offers_every: OfferWhereInput
+
+  """ condition must be true for at least 1 node """
+  offers_some: OfferWhereInput
+
+  """ condition must be false for all nodes """
+  offers_none: OfferWhereInput
+
+  """ condition must be true for all nodes """
+  requests_every: RequestWhereInput
+
+  """ condition must be true for at least 1 node """
+  requests_some: RequestWhereInput
+
+  """ condition must be false for all nodes """
+  requests_none: RequestWhereInput
+
+  """ condition must be true for all nodes """
+  exchange_every: ExchangeWhereInput
+
+  """ condition must be true for at least 1 node """
+  exchange_some: ExchangeWhereInput
+
+  """ condition must be false for all nodes """
+  exchange_none: ExchangeWhereInput
+  message: String
+  message_not: String
+  message_contains: String
+  message_not_contains: String
+  message_starts_with: String
+  message_not_starts_with: String
+  message_ends_with: String
+  message_not_ends_with: String
+  message_i: String
+  message_not_i: String
+  message_contains_i: String
+  message_not_contains_i: String
+  message_starts_with_i: String
+  message_not_starts_with_i: String
+  message_ends_with_i: String
+  message_not_ends_with_i: String
+  message_in: [String]
+  message_not_in: [String]
+  profilePhoto: PictureWhereInput
+  profilePhoto_is_null: Boolean
+  passwordResetToken_is_set: Boolean
+  passwordResetIssuedAt: String
+  passwordResetIssuedAt_not: String
+  passwordResetIssuedAt_lt: String
+  passwordResetIssuedAt_lte: String
+  passwordResetIssuedAt_gt: String
+  passwordResetIssuedAt_gte: String
+  passwordResetIssuedAt_in: [String]
+  passwordResetIssuedAt_not_in: [String]
+  passwordResetRedeemedAt: String
+  passwordResetRedeemedAt_not: String
+  passwordResetRedeemedAt_lt: String
+  passwordResetRedeemedAt_lte: String
+  passwordResetRedeemedAt_gt: String
+  passwordResetRedeemedAt_gte: String
+  passwordResetRedeemedAt_in: [String]
+  passwordResetRedeemedAt_not_in: [String]
+  magicAuthToken_is_set: Boolean
+  magicAuthIssuedAt: String
+  magicAuthIssuedAt_not: String
+  magicAuthIssuedAt_lt: String
+  magicAuthIssuedAt_lte: String
+  magicAuthIssuedAt_gt: String
+  magicAuthIssuedAt_gte: String
+  magicAuthIssuedAt_in: [String]
+  magicAuthIssuedAt_not_in: [String]
+  magicAuthRedeemedAt: String
+  magicAuthRedeemedAt_not: String
+  magicAuthRedeemedAt_lt: String
+  magicAuthRedeemedAt_lte: String
+  magicAuthRedeemedAt_gt: String
+  magicAuthRedeemedAt_gte: String
+  magicAuthRedeemedAt_in: [String]
+  magicAuthRedeemedAt_not_in: [String]
+}
+
+input PersonWhereUniqueInput {
+  id: ID!
+}
+
+enum SortPeopleBy {
+  id_ASC
+  id_DESC
+  firstName_ASC
+  firstName_DESC
+  lastName_ASC
+  lastName_DESC
+  email_ASC
+  email_DESC
+  home_ASC
+  home_DESC
+  signUpDate_ASC
+  signUpDate_DESC
+  companions_ASC
+  companions_DESC
+  crimes_ASC
+  crimes_DESC
+  offers_ASC
+  offers_DESC
+  requests_ASC
+  requests_DESC
+  exchange_ASC
+  exchange_DESC
+  message_ASC
+  message_DESC
+  profilePhoto_ASC
+  profilePhoto_DESC
+  passwordResetIssuedAt_ASC
+  passwordResetIssuedAt_DESC
+  passwordResetRedeemedAt_ASC
+  passwordResetRedeemedAt_DESC
+  magicAuthIssuedAt_ASC
+  magicAuthIssuedAt_DESC
+  magicAuthRedeemedAt_ASC
+  magicAuthRedeemedAt_DESC
+}
+
+input PersonUpdateInput {
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  home: String
+  signUpDate: String
+  companions: PersonRelateToManyInput
+  crimes: CrimeRelateToManyInput
+  offers: OfferRelateToManyInput
+  requests: RequestRelateToManyInput
+  exchange: ExchangeRelateToManyInput
+  message: String
+  profilePhoto: PictureRelateToOneInput
+  passwordResetToken: String
+  passwordResetIssuedAt: String
+  passwordResetRedeemedAt: String
+  magicAuthToken: String
+  magicAuthIssuedAt: String
+  magicAuthRedeemedAt: String
+}
+
+input PeopleUpdateInput {
+  id: ID!
+  data: PersonUpdateInput
+}
+
+input PersonCreateInput {
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  home: String
+  signUpDate: String
+  companions: PersonRelateToManyInput
+  crimes: CrimeRelateToManyInput
+  offers: OfferRelateToManyInput
+  requests: RequestRelateToManyInput
+  exchange: ExchangeRelateToManyInput
+  message: String
+  profilePhoto: PictureRelateToOneInput
+  passwordResetToken: String
+  passwordResetIssuedAt: String
+  passwordResetRedeemedAt: String
+  magicAuthToken: String
+  magicAuthIssuedAt: String
+  magicAuthRedeemedAt: String
+}
+
+input PeopleCreateInput {
+  data: PersonCreateInput
+}
+
+type CloudinaryImage_File {
+  id: ID
+  path: String
+  filename: String
+  originalFilename: String
+  mimetype: String
+  encoding: String
+  publicUrl: String
+  publicUrlTransformed(transformation: CloudinaryImageFormat): String
+}
+
+"""
+Mirrors the formatting options [Cloudinary provides](https://cloudinary.com/documentation/image_transformation_reference).
+All options are strings as they ultimately end up in a URL.
+"""
+input CloudinaryImageFormat {
+  """ Rewrites the filename to be this pretty string. Do not include `/` or `.` 
+  """
+  prettyName: String
+  width: String
+  height: String
+  crop: String
+  aspect_ratio: String
+  gravity: String
+  zoom: String
+  x: String
+  y: String
+  format: String
+  fetch_format: String
+  quality: String
+  radius: String
+  angle: String
+  effect: String
+  opacity: String
+  border: String
+  background: String
+  overlay: String
+  underlay: String
+  default_image: String
+  delay: String
+  color: String
+  color_space: String
+  dpr: String
+  page: String
+  density: String
+  flags: String
+  transformation: String
+}
+
+input PersonRelateToOneInput {
+  create: PersonCreateInput
+  connect: PersonWhereUniqueInput
+  disconnect: PersonWhereUniqueInput
+  disconnectAll: Boolean
+}
+
+input CrimeRelateToOneInput {
+  create: CrimeCreateInput
+  connect: CrimeWhereUniqueInput
+  disconnect: CrimeWhereUniqueInput
+  disconnectAll: Boolean
+}
+
+""" A keystone list """
+type Picture {
+  id: ID!
+  image: CloudinaryImage_File
+  altText: String
+  person: Person
+  crime: Crime
+}
+
+input PictureWhereInput {
+  AND: [PictureWhereInput]
+  OR: [PictureWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  image: String
+  image_not: String
+  image_in: [String]
+  image_not_in: [String]
+  altText: String
+  altText_not: String
+  altText_contains: String
+  altText_not_contains: String
+  altText_starts_with: String
+  altText_not_starts_with: String
+  altText_ends_with: String
+  altText_not_ends_with: String
+  altText_i: String
+  altText_not_i: String
+  altText_contains_i: String
+  altText_not_contains_i: String
+  altText_starts_with_i: String
+  altText_not_starts_with_i: String
+  altText_ends_with_i: String
+  altText_not_ends_with_i: String
+  altText_in: [String]
+  altText_not_in: [String]
+  person: PersonWhereInput
+  person_is_null: Boolean
+  crime: CrimeWhereInput
+  crime_is_null: Boolean
+}
+
+input PictureWhereUniqueInput {
+  id: ID!
+}
+
+enum SortPicturesBy {
+  id_ASC
+  id_DESC
+  altText_ASC
+  altText_DESC
+  person_ASC
+  person_DESC
+  crime_ASC
+  crime_DESC
+}
+
+input PictureUpdateInput {
+  image: Upload
+  altText: String
+  person: PersonRelateToOneInput
+  crime: CrimeRelateToOneInput
+}
+
+input PicturesUpdateInput {
+  id: ID!
+  data: PictureUpdateInput
+}
+
+input PictureCreateInput {
+  image: Upload
+  altText: String
+  person: PersonRelateToOneInput
+  crime: CrimeRelateToOneInput
+}
+
+input PicturesCreateInput {
+  data: PictureCreateInput
+}
+
+""" A keystone list """
+type Offer {
+  id: ID!
+  category: String
+  amount: Int
+  message: String
+  time: String
+  travelOrigin: String
+  travelDestination: String
+  hostLocation: String
+  startDate: String
+  endDate: String
+  numberPeople: Int
+  person: Person
+}
+
+input OfferWhereInput {
+  AND: [OfferWhereInput]
+  OR: [OfferWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  category: String
+  category_not: String
+  category_contains: String
+  category_not_contains: String
+  category_starts_with: String
+  category_not_starts_with: String
+  category_ends_with: String
+  category_not_ends_with: String
+  category_i: String
+  category_not_i: String
+  category_contains_i: String
+  category_not_contains_i: String
+  category_starts_with_i: String
+  category_not_starts_with_i: String
+  category_ends_with_i: String
+  category_not_ends_with_i: String
+  category_in: [String]
+  category_not_in: [String]
+  amount: Int
+  amount_not: Int
+  amount_lt: Int
+  amount_lte: Int
+  amount_gt: Int
+  amount_gte: Int
+  amount_in: [Int]
+  amount_not_in: [Int]
+  message: String
+  message_not: String
+  message_contains: String
+  message_not_contains: String
+  message_starts_with: String
+  message_not_starts_with: String
+  message_ends_with: String
+  message_not_ends_with: String
+  message_i: String
+  message_not_i: String
+  message_contains_i: String
+  message_not_contains_i: String
+  message_starts_with_i: String
+  message_not_starts_with_i: String
+  message_ends_with_i: String
+  message_not_ends_with_i: String
+  message_in: [String]
+  message_not_in: [String]
+  time: String
+  time_not: String
+  time_lt: String
+  time_lte: String
+  time_gt: String
+  time_gte: String
+  time_in: [String]
+  time_not_in: [String]
+  travelOrigin: String
+  travelOrigin_not: String
+  travelOrigin_contains: String
+  travelOrigin_not_contains: String
+  travelOrigin_starts_with: String
+  travelOrigin_not_starts_with: String
+  travelOrigin_ends_with: String
+  travelOrigin_not_ends_with: String
+  travelOrigin_i: String
+  travelOrigin_not_i: String
+  travelOrigin_contains_i: String
+  travelOrigin_not_contains_i: String
+  travelOrigin_starts_with_i: String
+  travelOrigin_not_starts_with_i: String
+  travelOrigin_ends_with_i: String
+  travelOrigin_not_ends_with_i: String
+  travelOrigin_in: [String]
+  travelOrigin_not_in: [String]
+  travelDestination: String
+  travelDestination_not: String
+  travelDestination_contains: String
+  travelDestination_not_contains: String
+  travelDestination_starts_with: String
+  travelDestination_not_starts_with: String
+  travelDestination_ends_with: String
+  travelDestination_not_ends_with: String
+  travelDestination_i: String
+  travelDestination_not_i: String
+  travelDestination_contains_i: String
+  travelDestination_not_contains_i: String
+  travelDestination_starts_with_i: String
+  travelDestination_not_starts_with_i: String
+  travelDestination_ends_with_i: String
+  travelDestination_not_ends_with_i: String
+  travelDestination_in: [String]
+  travelDestination_not_in: [String]
+  hostLocation: String
+  hostLocation_not: String
+  hostLocation_contains: String
+  hostLocation_not_contains: String
+  hostLocation_starts_with: String
+  hostLocation_not_starts_with: String
+  hostLocation_ends_with: String
+  hostLocation_not_ends_with: String
+  hostLocation_i: String
+  hostLocation_not_i: String
+  hostLocation_contains_i: String
+  hostLocation_not_contains_i: String
+  hostLocation_starts_with_i: String
+  hostLocation_not_starts_with_i: String
+  hostLocation_ends_with_i: String
+  hostLocation_not_ends_with_i: String
+  hostLocation_in: [String]
+  hostLocation_not_in: [String]
+  startDate: String
+  startDate_not: String
+  startDate_contains: String
+  startDate_not_contains: String
+  startDate_starts_with: String
+  startDate_not_starts_with: String
+  startDate_ends_with: String
+  startDate_not_ends_with: String
+  startDate_i: String
+  startDate_not_i: String
+  startDate_contains_i: String
+  startDate_not_contains_i: String
+  startDate_starts_with_i: String
+  startDate_not_starts_with_i: String
+  startDate_ends_with_i: String
+  startDate_not_ends_with_i: String
+  startDate_in: [String]
+  startDate_not_in: [String]
+  endDate: String
+  endDate_not: String
+  endDate_contains: String
+  endDate_not_contains: String
+  endDate_starts_with: String
+  endDate_not_starts_with: String
+  endDate_ends_with: String
+  endDate_not_ends_with: String
+  endDate_i: String
+  endDate_not_i: String
+  endDate_contains_i: String
+  endDate_not_contains_i: String
+  endDate_starts_with_i: String
+  endDate_not_starts_with_i: String
+  endDate_ends_with_i: String
+  endDate_not_ends_with_i: String
+  endDate_in: [String]
+  endDate_not_in: [String]
+  numberPeople: Int
+  numberPeople_not: Int
+  numberPeople_lt: Int
+  numberPeople_lte: Int
+  numberPeople_gt: Int
+  numberPeople_gte: Int
+  numberPeople_in: [Int]
+  numberPeople_not_in: [Int]
+  person: PersonWhereInput
+  person_is_null: Boolean
+}
+
+input OfferWhereUniqueInput {
+  id: ID!
+}
+
+enum SortOffersBy {
+  id_ASC
+  id_DESC
+  category_ASC
+  category_DESC
+  amount_ASC
+  amount_DESC
+  message_ASC
+  message_DESC
+  time_ASC
+  time_DESC
+  travelOrigin_ASC
+  travelOrigin_DESC
+  travelDestination_ASC
+  travelDestination_DESC
+  hostLocation_ASC
+  hostLocation_DESC
+  startDate_ASC
+  startDate_DESC
+  endDate_ASC
+  endDate_DESC
+  numberPeople_ASC
+  numberPeople_DESC
+  person_ASC
+  person_DESC
+}
+
+input OfferUpdateInput {
+  category: String
+  amount: Int
+  message: String
+  time: String
+  travelOrigin: String
+  travelDestination: String
+  hostLocation: String
+  startDate: String
+  endDate: String
+  numberPeople: Int
+  person: PersonRelateToOneInput
+}
+
+input OffersUpdateInput {
+  id: ID!
+  data: OfferUpdateInput
+}
+
+input OfferCreateInput {
+  category: String
+  amount: Int
+  message: String
+  time: String
+  travelOrigin: String
+  travelDestination: String
+  hostLocation: String
+  startDate: String
+  endDate: String
+  numberPeople: Int
+  person: PersonRelateToOneInput
+}
+
+input OffersCreateInput {
+  data: OfferCreateInput
+}
+
+""" A keystone list """
+type Request {
+  id: ID!
+  category: String
+  amount: Int
+  message: String
+  time: String
+  travelOrigin: String
+  travelDestination: String
+  numberPeople: Int
+  hostLocation: String
+  person: Person
+}
+
+input RequestWhereInput {
+  AND: [RequestWhereInput]
+  OR: [RequestWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  category: String
+  category_not: String
+  category_contains: String
+  category_not_contains: String
+  category_starts_with: String
+  category_not_starts_with: String
+  category_ends_with: String
+  category_not_ends_with: String
+  category_i: String
+  category_not_i: String
+  category_contains_i: String
+  category_not_contains_i: String
+  category_starts_with_i: String
+  category_not_starts_with_i: String
+  category_ends_with_i: String
+  category_not_ends_with_i: String
+  category_in: [String]
+  category_not_in: [String]
+  amount: Int
+  amount_not: Int
+  amount_lt: Int
+  amount_lte: Int
+  amount_gt: Int
+  amount_gte: Int
+  amount_in: [Int]
+  amount_not_in: [Int]
+  message: String
+  message_not: String
+  message_contains: String
+  message_not_contains: String
+  message_starts_with: String
+  message_not_starts_with: String
+  message_ends_with: String
+  message_not_ends_with: String
+  message_i: String
+  message_not_i: String
+  message_contains_i: String
+  message_not_contains_i: String
+  message_starts_with_i: String
+  message_not_starts_with_i: String
+  message_ends_with_i: String
+  message_not_ends_with_i: String
+  message_in: [String]
+  message_not_in: [String]
+  time: String
+  time_not: String
+  time_lt: String
+  time_lte: String
+  time_gt: String
+  time_gte: String
+  time_in: [String]
+  time_not_in: [String]
+  travelOrigin: String
+  travelOrigin_not: String
+  travelOrigin_contains: String
+  travelOrigin_not_contains: String
+  travelOrigin_starts_with: String
+  travelOrigin_not_starts_with: String
+  travelOrigin_ends_with: String
+  travelOrigin_not_ends_with: String
+  travelOrigin_i: String
+  travelOrigin_not_i: String
+  travelOrigin_contains_i: String
+  travelOrigin_not_contains_i: String
+  travelOrigin_starts_with_i: String
+  travelOrigin_not_starts_with_i: String
+  travelOrigin_ends_with_i: String
+  travelOrigin_not_ends_with_i: String
+  travelOrigin_in: [String]
+  travelOrigin_not_in: [String]
+  travelDestination: String
+  travelDestination_not: String
+  travelDestination_contains: String
+  travelDestination_not_contains: String
+  travelDestination_starts_with: String
+  travelDestination_not_starts_with: String
+  travelDestination_ends_with: String
+  travelDestination_not_ends_with: String
+  travelDestination_i: String
+  travelDestination_not_i: String
+  travelDestination_contains_i: String
+  travelDestination_not_contains_i: String
+  travelDestination_starts_with_i: String
+  travelDestination_not_starts_with_i: String
+  travelDestination_ends_with_i: String
+  travelDestination_not_ends_with_i: String
+  travelDestination_in: [String]
+  travelDestination_not_in: [String]
+  numberPeople: Int
+  numberPeople_not: Int
+  numberPeople_lt: Int
+  numberPeople_lte: Int
+  numberPeople_gt: Int
+  numberPeople_gte: Int
+  numberPeople_in: [Int]
+  numberPeople_not_in: [Int]
+  hostLocation: String
+  hostLocation_not: String
+  hostLocation_contains: String
+  hostLocation_not_contains: String
+  hostLocation_starts_with: String
+  hostLocation_not_starts_with: String
+  hostLocation_ends_with: String
+  hostLocation_not_ends_with: String
+  hostLocation_i: String
+  hostLocation_not_i: String
+  hostLocation_contains_i: String
+  hostLocation_not_contains_i: String
+  hostLocation_starts_with_i: String
+  hostLocation_not_starts_with_i: String
+  hostLocation_ends_with_i: String
+  hostLocation_not_ends_with_i: String
+  hostLocation_in: [String]
+  hostLocation_not_in: [String]
+  person: PersonWhereInput
+  person_is_null: Boolean
+}
+
+input RequestWhereUniqueInput {
+  id: ID!
+}
+
+enum SortRequestsBy {
+  id_ASC
+  id_DESC
+  category_ASC
+  category_DESC
+  amount_ASC
+  amount_DESC
+  message_ASC
+  message_DESC
+  time_ASC
+  time_DESC
+  travelOrigin_ASC
+  travelOrigin_DESC
+  travelDestination_ASC
+  travelDestination_DESC
+  numberPeople_ASC
+  numberPeople_DESC
+  hostLocation_ASC
+  hostLocation_DESC
+  person_ASC
+  person_DESC
+}
+
+input RequestUpdateInput {
+  category: String
+  amount: Int
+  message: String
+  time: String
+  travelOrigin: String
+  travelDestination: String
+  numberPeople: Int
+  hostLocation: String
+  person: PersonRelateToOneInput
+}
+
+input RequestsUpdateInput {
+  id: ID!
+  data: RequestUpdateInput
+}
+
+input RequestCreateInput {
+  category: String
+  amount: Int
+  message: String
+  time: String
+  travelOrigin: String
+  travelDestination: String
+  numberPeople: Int
+  hostLocation: String
+  person: PersonRelateToOneInput
+}
+
+input RequestsCreateInput {
+  data: RequestCreateInput
+}
+
+""" A keystone list """
+type Exchange {
+  id: ID!
+  type: String
+  subtype: String
+  amount: Int
+  message: String
+  time: String
+  travelStart: String
+  travelEnd: String
+  hostLocation: String
+  person: Person
+}
+
+input ExchangeWhereInput {
+  AND: [ExchangeWhereInput]
+  OR: [ExchangeWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  type: String
+  type_not: String
+  type_contains: String
+  type_not_contains: String
+  type_starts_with: String
+  type_not_starts_with: String
+  type_ends_with: String
+  type_not_ends_with: String
+  type_i: String
+  type_not_i: String
+  type_contains_i: String
+  type_not_contains_i: String
+  type_starts_with_i: String
+  type_not_starts_with_i: String
+  type_ends_with_i: String
+  type_not_ends_with_i: String
+  type_in: [String]
+  type_not_in: [String]
+  subtype: String
+  subtype_not: String
+  subtype_contains: String
+  subtype_not_contains: String
+  subtype_starts_with: String
+  subtype_not_starts_with: String
+  subtype_ends_with: String
+  subtype_not_ends_with: String
+  subtype_i: String
+  subtype_not_i: String
+  subtype_contains_i: String
+  subtype_not_contains_i: String
+  subtype_starts_with_i: String
+  subtype_not_starts_with_i: String
+  subtype_ends_with_i: String
+  subtype_not_ends_with_i: String
+  subtype_in: [String]
+  subtype_not_in: [String]
+  amount: Int
+  amount_not: Int
+  amount_lt: Int
+  amount_lte: Int
+  amount_gt: Int
+  amount_gte: Int
+  amount_in: [Int]
+  amount_not_in: [Int]
+  message: String
+  message_not: String
+  message_contains: String
+  message_not_contains: String
+  message_starts_with: String
+  message_not_starts_with: String
+  message_ends_with: String
+  message_not_ends_with: String
+  message_i: String
+  message_not_i: String
+  message_contains_i: String
+  message_not_contains_i: String
+  message_starts_with_i: String
+  message_not_starts_with_i: String
+  message_ends_with_i: String
+  message_not_ends_with_i: String
+  message_in: [String]
+  message_not_in: [String]
+  time: String
+  time_not: String
+  time_lt: String
+  time_lte: String
+  time_gt: String
+  time_gte: String
+  time_in: [String]
+  time_not_in: [String]
+  travelStart: String
+  travelStart_not: String
+  travelStart_contains: String
+  travelStart_not_contains: String
+  travelStart_starts_with: String
+  travelStart_not_starts_with: String
+  travelStart_ends_with: String
+  travelStart_not_ends_with: String
+  travelStart_i: String
+  travelStart_not_i: String
+  travelStart_contains_i: String
+  travelStart_not_contains_i: String
+  travelStart_starts_with_i: String
+  travelStart_not_starts_with_i: String
+  travelStart_ends_with_i: String
+  travelStart_not_ends_with_i: String
+  travelStart_in: [String]
+  travelStart_not_in: [String]
+  travelEnd: String
+  travelEnd_not: String
+  travelEnd_contains: String
+  travelEnd_not_contains: String
+  travelEnd_starts_with: String
+  travelEnd_not_starts_with: String
+  travelEnd_ends_with: String
+  travelEnd_not_ends_with: String
+  travelEnd_i: String
+  travelEnd_not_i: String
+  travelEnd_contains_i: String
+  travelEnd_not_contains_i: String
+  travelEnd_starts_with_i: String
+  travelEnd_not_starts_with_i: String
+  travelEnd_ends_with_i: String
+  travelEnd_not_ends_with_i: String
+  travelEnd_in: [String]
+  travelEnd_not_in: [String]
+  hostLocation: String
+  hostLocation_not: String
+  hostLocation_contains: String
+  hostLocation_not_contains: String
+  hostLocation_starts_with: String
+  hostLocation_not_starts_with: String
+  hostLocation_ends_with: String
+  hostLocation_not_ends_with: String
+  hostLocation_i: String
+  hostLocation_not_i: String
+  hostLocation_contains_i: String
+  hostLocation_not_contains_i: String
+  hostLocation_starts_with_i: String
+  hostLocation_not_starts_with_i: String
+  hostLocation_ends_with_i: String
+  hostLocation_not_ends_with_i: String
+  hostLocation_in: [String]
+  hostLocation_not_in: [String]
+  person: PersonWhereInput
+  person_is_null: Boolean
+}
+
+input ExchangeWhereUniqueInput {
+  id: ID!
+}
+
+enum SortExchangesBy {
+  id_ASC
+  id_DESC
+  type_ASC
+  type_DESC
+  subtype_ASC
+  subtype_DESC
+  amount_ASC
+  amount_DESC
+  message_ASC
+  message_DESC
+  time_ASC
+  time_DESC
+  travelStart_ASC
+  travelStart_DESC
+  travelEnd_ASC
+  travelEnd_DESC
+  hostLocation_ASC
+  hostLocation_DESC
+  person_ASC
+  person_DESC
+}
+
+input ExchangeUpdateInput {
+  type: String
+  subtype: String
+  amount: Int
+  message: String
+  time: String
+  travelStart: String
+  travelEnd: String
+  hostLocation: String
+  person: PersonRelateToOneInput
+}
+
+input ExchangesUpdateInput {
+  id: ID!
+  data: ExchangeUpdateInput
+}
+
+input ExchangeCreateInput {
+  type: String
+  subtype: String
+  amount: Int
+  message: String
+  time: String
+  travelStart: String
+  travelEnd: String
+  hostLocation: String
+  person: PersonRelateToOneInput
+}
+
+input ExchangesCreateInput {
+  data: ExchangeCreateInput
+}
+
+input PictureRelateToManyInput {
+  create: [PictureCreateInput]
+  connect: [PictureWhereUniqueInput]
+  disconnect: [PictureWhereUniqueInput]
+  disconnectAll: Boolean
+}
+
+""" A keystone list """
+type Crime {
+  id: ID!
+  category: String
+  title: String
+  location: String
+  time: String
+  witnesses(where: PersonWhereInput, search: String, sortBy: [SortPeopleBy!], orderBy: String, first: Int, skip: Int): [Person!]!
+  _witnessesMeta(where: PersonWhereInput, search: String, sortBy: [SortPeopleBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  description: String
+  person: Person
+  evidence(where: PictureWhereInput, search: String, sortBy: [SortPicturesBy!], orderBy: String, first: Int, skip: Int): [Picture!]!
+  _evidenceMeta(where: PictureWhereInput, search: String, sortBy: [SortPicturesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+}
+
+input CrimeWhereInput {
+  AND: [CrimeWhereInput]
+  OR: [CrimeWhereInput]
+  id: ID
+  id_not: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  category: String
+  category_not: String
+  category_contains: String
+  category_not_contains: String
+  category_starts_with: String
+  category_not_starts_with: String
+  category_ends_with: String
+  category_not_ends_with: String
+  category_i: String
+  category_not_i: String
+  category_contains_i: String
+  category_not_contains_i: String
+  category_starts_with_i: String
+  category_not_starts_with_i: String
+  category_ends_with_i: String
+  category_not_ends_with_i: String
+  category_in: [String]
+  category_not_in: [String]
+  title: String
+  title_not: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  title_i: String
+  title_not_i: String
+  title_contains_i: String
+  title_not_contains_i: String
+  title_starts_with_i: String
+  title_not_starts_with_i: String
+  title_ends_with_i: String
+  title_not_ends_with_i: String
+  title_in: [String]
+  title_not_in: [String]
+  location: String
+  location_not: String
+  location_contains: String
+  location_not_contains: String
+  location_starts_with: String
+  location_not_starts_with: String
+  location_ends_with: String
+  location_not_ends_with: String
+  location_i: String
+  location_not_i: String
+  location_contains_i: String
+  location_not_contains_i: String
+  location_starts_with_i: String
+  location_not_starts_with_i: String
+  location_ends_with_i: String
+  location_not_ends_with_i: String
+  location_in: [String]
+  location_not_in: [String]
+  time: String
+  time_not: String
+  time_lt: String
+  time_lte: String
+  time_gt: String
+  time_gte: String
+  time_in: [String]
+  time_not_in: [String]
+
+  """ condition must be true for all nodes """
+  witnesses_every: PersonWhereInput
+
+  """ condition must be true for at least 1 node """
+  witnesses_some: PersonWhereInput
+
+  """ condition must be false for all nodes """
+  witnesses_none: PersonWhereInput
+  description: String
+  description_not: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  description_i: String
+  description_not_i: String
+  description_contains_i: String
+  description_not_contains_i: String
+  description_starts_with_i: String
+  description_not_starts_with_i: String
+  description_ends_with_i: String
+  description_not_ends_with_i: String
+  description_in: [String]
+  description_not_in: [String]
+  person: PersonWhereInput
+  person_is_null: Boolean
+
+  """ condition must be true for all nodes """
+  evidence_every: PictureWhereInput
+
+  """ condition must be true for at least 1 node """
+  evidence_some: PictureWhereInput
+
+  """ condition must be false for all nodes """
+  evidence_none: PictureWhereInput
+}
+
+input CrimeWhereUniqueInput {
+  id: ID!
+}
+
+enum SortCrimesBy {
+  id_ASC
+  id_DESC
+  category_ASC
+  category_DESC
+  title_ASC
+  title_DESC
+  location_ASC
+  location_DESC
+  time_ASC
+  time_DESC
+  witnesses_ASC
+  witnesses_DESC
+  description_ASC
+  description_DESC
+  person_ASC
+  person_DESC
+  evidence_ASC
+  evidence_DESC
+}
+
+input CrimeUpdateInput {
+  category: String
+  title: String
+  location: String
+  time: String
+  witnesses: PersonRelateToManyInput
+  description: String
+  person: PersonRelateToOneInput
+  evidence: PictureRelateToManyInput
+}
+
+input CrimesUpdateInput {
+  id: ID!
+  data: CrimeUpdateInput
+}
+
+input CrimeCreateInput {
+  category: String
+  title: String
+  location: String
+  time: String
+  witnesses: PersonRelateToManyInput
+  description: String
+  person: PersonRelateToOneInput
+  evidence: PictureRelateToManyInput
+}
+
+input CrimesCreateInput {
+  data: CrimeCreateInput
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+type _ListAccess {
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'create' operations.
+  NOTE: 'create' can only return a Boolean.
+  It is not possible to specify a declarative Where clause for this
+  operation
+  """
+  create: Boolean
+
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'read' operations.
+  """
+  read: JSON
+
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'update' operations.
+  """
+  update: JSON
+
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'delete' operations.
+  """
+  delete: JSON
+
+  """
+  Access Control settings for the currently logged in (or anonymous)
+  user when performing 'auth' operations.
+  """
+  auth: JSON
+}
+
+type _ListQueries {
+  """Single-item query name"""
+  item: String
+
+  """All-items query name"""
+  list: String
+
+  """List metadata query name"""
+  meta: String
+}
+
+type _ListMutations {
+  """Create mutation name"""
+  create: String
+
+  """Create many mutation name"""
+  createMany: String
+
+  """Update mutation name"""
+  update: String
+
+  """Update many mutation name"""
+  updateMany: String
+
+  """Delete mutation name"""
+  delete: String
+
+  """Delete many mutation name"""
+  deleteMany: String
+}
+
+type _ListInputTypes {
+  """Input type for matching multiple items"""
+  whereInput: String
+
+  """Input type for matching a unique item"""
+  whereUniqueInput: String
+
+  """Create mutation input type name"""
+  createInput: String
+
+  """Create many mutation input type name"""
+  createManyInput: String
+
+  """Update mutation name input"""
+  updateInput: String
+
+  """Update many mutation name input"""
+  updateManyInput: String
+}
+
+type _ListSchemaFields {
+  """The path of the field in its list"""
+  path: String
+
+  """The name of the field in its list"""
+  name: String @deprecated(reason: "Use `path` instead")
+
+  """The field type (ie, Checkbox, Text, etc)"""
+  type: String
+}
+
+type _ListSchemaRelatedFields {
+  """The typename as used in GraphQL queries"""
+  type: String
+
+  """A list of GraphQL field names"""
+  fields: [String]
+}
+
+type _ListSchema {
+  """The typename as used in GraphQL queries"""
+  type: String
+
+  """
+  Top level GraphQL query names which either return this type, or
+  provide aggregate information about this type
+  """
+  queries: _ListQueries
+
+  """Top-level GraphQL mutation names"""
+  mutations: _ListMutations
+
+  """Top-level GraphQL input types"""
+  inputTypes: _ListInputTypes
+
+  """Information about fields defined on this list"""
+  fields(where: _ListSchemaFieldsInput): [_ListSchemaFields]
+
+  """
+  Information about fields on other types which return this type, or
+  provide aggregate information about this type
+  """
+  relatedFields: [_ListSchemaRelatedFields]
+}
+
+type _ListMeta {
+  """The Keystone list key"""
+  key: String
+
+  """The Keystone List name"""
+  name: String @deprecated(reason: "Use `key` instead")
+
+  """The list's user-facing description"""
+  description: String
+
+  """The list's display name in the Admin UI"""
+  label: String
+
+  """The list's singular display name"""
+  singular: String
+
+  """The list's plural display name"""
+  plural: String
+
+  """The list's data path"""
+  path: String
+
+  """Access control configuration for the currently authenticated request"""
+  access: _ListAccess
+
+  """Information on the generated GraphQL schema"""
+  schema: _ListSchema
+}
+
+type _QueryMeta {
+  count: Int
+}
+
+input _ksListsMetaInput {
+  key: String
+
+  """Whether this is an auxiliary helper list"""
+  auxiliary: Boolean
+}
+
+input _ListSchemaFieldsInput {
+  type: String
+}
+
+type Query {
+  """ Search for all Person items which match the where clause. """
+  allPeople(where: PersonWhereInput, search: String, sortBy: [SortPeopleBy!], orderBy: String, first: Int, skip: Int): [Person]
+
+  """ Search for the Person item with the matching ID. """
+  Person(where: PersonWhereUniqueInput!): Person
+
+  """ Perform a meta-query on all Person items which match the where clause. 
+  """
+  _allPeopleMeta(where: PersonWhereInput, search: String, sortBy: [SortPeopleBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Person list. """
+  _PeopleMeta: _ListMeta
+
+  """ Search for all Picture items which match the where clause. """
+  allPictures(where: PictureWhereInput, search: String, sortBy: [SortPicturesBy!], orderBy: String, first: Int, skip: Int): [Picture]
+
+  """ Search for the Picture item with the matching ID. """
+  Picture(where: PictureWhereUniqueInput!): Picture
+
+  """ Perform a meta-query on all Picture items which match the where clause. 
+  """
+  _allPicturesMeta(where: PictureWhereInput, search: String, sortBy: [SortPicturesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Picture list. """
+  _PicturesMeta: _ListMeta
+
+  """ Search for all Offer items which match the where clause. """
+  allOffers(where: OfferWhereInput, search: String, sortBy: [SortOffersBy!], orderBy: String, first: Int, skip: Int): [Offer]
+
+  """ Search for the Offer item with the matching ID. """
+  Offer(where: OfferWhereUniqueInput!): Offer
+
+  """ Perform a meta-query on all Offer items which match the where clause. 
+  """
+  _allOffersMeta(where: OfferWhereInput, search: String, sortBy: [SortOffersBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Offer list. """
+  _OffersMeta: _ListMeta
+
+  """ Search for all Request items which match the where clause. """
+  allRequests(where: RequestWhereInput, search: String, sortBy: [SortRequestsBy!], orderBy: String, first: Int, skip: Int): [Request]
+
+  """ Search for the Request item with the matching ID. """
+  Request(where: RequestWhereUniqueInput!): Request
+
+  """ Perform a meta-query on all Request items which match the where clause. 
+  """
+  _allRequestsMeta(where: RequestWhereInput, search: String, sortBy: [SortRequestsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Request list. """
+  _RequestsMeta: _ListMeta
+
+  """ Search for all Exchange items which match the where clause. """
+  allExchanges(where: ExchangeWhereInput, search: String, sortBy: [SortExchangesBy!], orderBy: String, first: Int, skip: Int): [Exchange]
+
+  """ Search for the Exchange item with the matching ID. """
+  Exchange(where: ExchangeWhereUniqueInput!): Exchange
+
+  """ Perform a meta-query on all Exchange items which match the where clause. 
+  """
+  _allExchangesMeta(where: ExchangeWhereInput, search: String, sortBy: [SortExchangesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Exchange list. """
+  _ExchangesMeta: _ListMeta
+
+  """ Search for all Crime items which match the where clause. """
+  allCrimes(where: CrimeWhereInput, search: String, sortBy: [SortCrimesBy!], orderBy: String, first: Int, skip: Int): [Crime]
+
+  """ Search for the Crime item with the matching ID. """
+  Crime(where: CrimeWhereUniqueInput!): Crime
+
+  """ Perform a meta-query on all Crime items which match the where clause. 
+  """
+  _allCrimesMeta(where: CrimeWhereInput, search: String, sortBy: [SortCrimesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+
+  """ Retrieve the meta-data for the Crime list. """
+  _CrimesMeta: _ListMeta
+
+  """ Retrieve the meta-data for all lists. """
+  _ksListsMeta(where: _ksListsMetaInput): [_ListMeta]
+
+  """The version of the Keystone application serving this API."""
+  appVersion: String
+  authenticatedItem: AuthenticatedItem
+  validatePersonPasswordResetToken(email: String!, token: String!): ValidatePersonPasswordResetTokenResult
+  keystone: KeystoneMeta!
+}
+
+type Mutation {
+  """ Create a single Person item. """
+  createPerson(data: PersonCreateInput): Person
+
+  """ Create multiple Person items. """
+  createPeople(data: [PeopleCreateInput]): [Person]
+
+  """ Update a single Person item by ID. """
+  updatePerson(id: ID!, data: PersonUpdateInput): Person
+
+  """ Update multiple Person items by ID. """
+  updatePeople(data: [PeopleUpdateInput]): [Person]
+
+  """ Delete a single Person item by ID. """
+  deletePerson(id: ID!): Person
+
+  """ Delete multiple Person items by ID. """
+  deletePeople(ids: [ID!]): [Person]
+
+  """ Create a single Picture item. """
+  createPicture(data: PictureCreateInput): Picture
+
+  """ Create multiple Picture items. """
+  createPictures(data: [PicturesCreateInput]): [Picture]
+
+  """ Update a single Picture item by ID. """
+  updatePicture(id: ID!, data: PictureUpdateInput): Picture
+
+  """ Update multiple Picture items by ID. """
+  updatePictures(data: [PicturesUpdateInput]): [Picture]
+
+  """ Delete a single Picture item by ID. """
+  deletePicture(id: ID!): Picture
+
+  """ Delete multiple Picture items by ID. """
+  deletePictures(ids: [ID!]): [Picture]
+
+  """ Create a single Offer item. """
+  createOffer(data: OfferCreateInput): Offer
+
+  """ Create multiple Offer items. """
+  createOffers(data: [OffersCreateInput]): [Offer]
+
+  """ Update a single Offer item by ID. """
+  updateOffer(id: ID!, data: OfferUpdateInput): Offer
+
+  """ Update multiple Offer items by ID. """
+  updateOffers(data: [OffersUpdateInput]): [Offer]
+
+  """ Delete a single Offer item by ID. """
+  deleteOffer(id: ID!): Offer
+
+  """ Delete multiple Offer items by ID. """
+  deleteOffers(ids: [ID!]): [Offer]
+
+  """ Create a single Request item. """
+  createRequest(data: RequestCreateInput): Request
+
+  """ Create multiple Request items. """
+  createRequests(data: [RequestsCreateInput]): [Request]
+
+  """ Update a single Request item by ID. """
+  updateRequest(id: ID!, data: RequestUpdateInput): Request
+
+  """ Update multiple Request items by ID. """
+  updateRequests(data: [RequestsUpdateInput]): [Request]
+
+  """ Delete a single Request item by ID. """
+  deleteRequest(id: ID!): Request
+
+  """ Delete multiple Request items by ID. """
+  deleteRequests(ids: [ID!]): [Request]
+
+  """ Create a single Exchange item. """
+  createExchange(data: ExchangeCreateInput): Exchange
+
+  """ Create multiple Exchange items. """
+  createExchanges(data: [ExchangesCreateInput]): [Exchange]
+
+  """ Update a single Exchange item by ID. """
+  updateExchange(id: ID!, data: ExchangeUpdateInput): Exchange
+
+  """ Update multiple Exchange items by ID. """
+  updateExchanges(data: [ExchangesUpdateInput]): [Exchange]
+
+  """ Delete a single Exchange item by ID. """
+  deleteExchange(id: ID!): Exchange
+
+  """ Delete multiple Exchange items by ID. """
+  deleteExchanges(ids: [ID!]): [Exchange]
+
+  """ Create a single Crime item. """
+  createCrime(data: CrimeCreateInput): Crime
+
+  """ Create multiple Crime items. """
+  createCrimes(data: [CrimesCreateInput]): [Crime]
+
+  """ Update a single Crime item by ID. """
+  updateCrime(id: ID!, data: CrimeUpdateInput): Crime
+
+  """ Update multiple Crime items by ID. """
+  updateCrimes(data: [CrimesUpdateInput]): [Crime]
+
+  """ Delete a single Crime item by ID. """
+  deleteCrime(id: ID!): Crime
+
+  """ Delete multiple Crime items by ID. """
+  deleteCrimes(ids: [ID!]): [Crime]
+  authenticatePersonWithPassword(email: String!, password: String!): PersonAuthenticationWithPasswordResult!
+  createInitialPerson(data: CreateInitialPersonInput!): PersonAuthenticationWithPasswordSuccess!
+  sendPersonPasswordResetLink(email: String!): SendPersonPasswordResetLinkResult
+  redeemPersonPasswordResetToken(email: String!, token: String!, password: String!): RedeemPersonPasswordResetTokenResult
+  endSession: Boolean!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+union AuthenticatedItem = Person
+
+union PersonAuthenticationWithPasswordResult = PersonAuthenticationWithPasswordSuccess | PersonAuthenticationWithPasswordFailure
+
+type PersonAuthenticationWithPasswordSuccess {
+  sessionToken: String!
+  item: Person!
+}
+
+type PersonAuthenticationWithPasswordFailure {
+  code: PasswordAuthErrorCode!
+  message: String!
+}
+
+enum PasswordAuthErrorCode {
+  FAILURE
+  IDENTITY_NOT_FOUND
+  SECRET_NOT_SET
+  MULTIPLE_IDENTITY_MATCHES
+  SECRET_MISMATCH
+}
+
+input CreateInitialPersonInput {
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+}
+
+type SendPersonPasswordResetLinkResult {
+  code: PasswordResetRequestErrorCode!
+  message: String!
+}
+
+enum PasswordResetRequestErrorCode {
+  IDENTITY_NOT_FOUND
+  MULTIPLE_IDENTITY_MATCHES
+}
+
+type ValidatePersonPasswordResetTokenResult {
+  code: PasswordResetRedemptionErrorCode!
+  message: String!
+}
+
+type RedeemPersonPasswordResetTokenResult {
+  code: PasswordResetRedemptionErrorCode!
+  message: String!
+}
+
+enum PasswordResetRedemptionErrorCode {
+  FAILURE
+  IDENTITY_NOT_FOUND
+  MULTIPLE_IDENTITY_MATCHES
+  TOKEN_NOT_SET
+  TOKEN_MISMATCH
+  TOKEN_EXPIRED
+  TOKEN_REDEEMED
+}
+
+type KeystoneMeta {
+  adminMeta: KeystoneAdminMeta!
+}
+
+type KeystoneAdminMeta {
+  enableSignout: Boolean!
+  enableSessionItem: Boolean!
+  lists: [KeystoneAdminUIListMeta!]!
+  list(key: String!): KeystoneAdminUIListMeta
+}
+
+type KeystoneAdminUIListMeta {
+  key: String!
+  itemQueryName: String!
+  listQueryName: String!
+  hideCreate: Boolean!
+  hideDelete: Boolean!
+  path: String!
+  label: String!
+  singular: String!
+  plural: String!
+  description: String
+  initialColumns: [String!]!
+  pageSize: Int!
+  labelField: String!
+  fields: [KeystoneAdminUIFieldMeta!]!
+  initialSort: KeystoneAdminUISort
+  isHidden: Boolean!
+}
+
+type KeystoneAdminUISort {
+  field: String!
+  direction: KeystoneAdminUISortDirection!
+}
+
+type KeystoneAdminUIFieldMeta {
+  path: String!
+  label: String!
+  isOrderable: Boolean!
+  fieldMeta: JSON
+  viewsHash: String!
+  customViewsHash: String
+  createView: KeystoneAdminUIFieldMetaCreateView!
+  listView: KeystoneAdminUIFieldMetaListView!
+  itemView(id: ID!): KeystoneAdminUIFieldMetaItemView
+}
+
+type KeystoneAdminUIFieldMetaCreateView {
+  fieldMode: KeystoneAdminUIFieldMetaCreateViewFieldMode!
+}
+
+type KeystoneAdminUIFieldMetaListView {
+  fieldMode: KeystoneAdminUIFieldMetaListViewFieldMode!
+}
+
+type KeystoneAdminUIFieldMetaItemView {
+  fieldMode: KeystoneAdminUIFieldMetaItemViewFieldMode!
+}
+
+enum KeystoneAdminUIFieldMetaCreateViewFieldMode {
+  edit
+  hidden
+}
+
+enum KeystoneAdminUIFieldMetaListViewFieldMode {
+  read
+  hidden
+}
+
+enum KeystoneAdminUIFieldMetaItemViewFieldMode {
+  edit
+  read
+  hidden
+}
+
+enum KeystoneAdminUISortDirection {
+  ASC
+  DESC
+}
