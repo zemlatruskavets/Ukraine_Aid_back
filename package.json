@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "keystone-next",
     "start": "keystone-next start",
+    "build": "keystone-next build",
     "seed-data": "keystone-next --seed-data"
   },
   "eslintConfig": {
