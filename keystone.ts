@@ -61,7 +61,7 @@ const sessionConfig = {
   3. initial auth
   ----------------
 */
-// define the information required for initial access
+// define the information required for initial login
 const { withAuth } = createAuth({
   listKey: 'Person',
   identityField: 'email',
