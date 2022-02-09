@@ -95,6 +95,10 @@ export default withAuth(
     db: {
       adapter: 'mongoose',
       url: databaseURL,
+      async onConnect(keystone) {
+        console.log('Connected to the database!');
+        }
+      },
     },
     // these are all the datatypes in the app
     lists: createSchema({
