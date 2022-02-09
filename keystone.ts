@@ -97,7 +97,6 @@ export default withAuth(
       url: databaseURL,
       async onConnect(keystone) {
         console.log('Connected to the database!');
-        }
       },
     },
     // these are all the datatypes in the app
