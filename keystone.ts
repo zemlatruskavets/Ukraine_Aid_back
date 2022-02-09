@@ -110,7 +110,8 @@ export default withAuth(
     }),
     // define who can see the backend UI
     ui: {
-      isAccessAllowed: ({ session }) => !!session?.data,
+      // isAccessAllowed: ({ session }) => !!session?.data,
+      isAccessAllowed: () => true,
     },
     // information associated with each session
     session: withItemData(statelessSessions(sessionConfig), {
