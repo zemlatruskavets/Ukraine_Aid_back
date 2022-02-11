@@ -111,7 +111,11 @@ export default withAuth(
     // define who can see the backend UI
     ui: {
       // isAccessAllowed: ({ session }) => !!session?.data,
-      isAccessAllowed: () => true,
+      isAccessAllowed: ({ session }) => {
+        if (session?.data.id === '6205754ed046265394476df6') {
+          return true;
+        }
+      },
     },
     // information associated with each session
     session: withItemData(statelessSessions(sessionConfig), {

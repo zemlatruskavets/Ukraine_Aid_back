@@ -700,6 +700,24 @@ export type RequestWhereInput = {
   readonly amount_gte?: Scalars['Int'] | null;
   readonly amount_in?: ReadonlyArray<Scalars['Int'] | null> | null;
   readonly amount_not_in?: ReadonlyArray<Scalars['Int'] | null> | null;
+  readonly transferLink?: Scalars['String'] | null;
+  readonly transferLink_not?: Scalars['String'] | null;
+  readonly transferLink_contains?: Scalars['String'] | null;
+  readonly transferLink_not_contains?: Scalars['String'] | null;
+  readonly transferLink_starts_with?: Scalars['String'] | null;
+  readonly transferLink_not_starts_with?: Scalars['String'] | null;
+  readonly transferLink_ends_with?: Scalars['String'] | null;
+  readonly transferLink_not_ends_with?: Scalars['String'] | null;
+  readonly transferLink_i?: Scalars['String'] | null;
+  readonly transferLink_not_i?: Scalars['String'] | null;
+  readonly transferLink_contains_i?: Scalars['String'] | null;
+  readonly transferLink_not_contains_i?: Scalars['String'] | null;
+  readonly transferLink_starts_with_i?: Scalars['String'] | null;
+  readonly transferLink_not_starts_with_i?: Scalars['String'] | null;
+  readonly transferLink_ends_with_i?: Scalars['String'] | null;
+  readonly transferLink_not_ends_with_i?: Scalars['String'] | null;
+  readonly transferLink_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly transferLink_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly message?: Scalars['String'] | null;
   readonly message_not?: Scalars['String'] | null;
   readonly message_contains?: Scalars['String'] | null;
@@ -843,6 +861,8 @@ export type SortRequestsBy =
   | 'category_DESC'
   | 'amount_ASC'
   | 'amount_DESC'
+  | 'transferLink_ASC'
+  | 'transferLink_DESC'
   | 'message_ASC'
   | 'message_DESC'
   | 'time_ASC'
@@ -865,6 +885,7 @@ export type SortRequestsBy =
 export type RequestUpdateInput = {
   readonly category?: Scalars['String'] | null;
   readonly amount?: Scalars['Int'] | null;
+  readonly transferLink?: Scalars['String'] | null;
   readonly message?: Scalars['String'] | null;
   readonly time?: Scalars['String'] | null;
   readonly travelOrigin?: Scalars['String'] | null;
@@ -884,6 +905,7 @@ export type RequestsUpdateInput = {
 export type RequestCreateInput = {
   readonly category?: Scalars['String'] | null;
   readonly amount?: Scalars['Int'] | null;
+  readonly transferLink?: Scalars['String'] | null;
   readonly message?: Scalars['String'] | null;
   readonly time?: Scalars['String'] | null;
   readonly travelOrigin?: Scalars['String'] | null;
@@ -1464,6 +1486,7 @@ export type RequestListTypeInfo = {
     | 'id'
     | 'category'
     | 'amount'
+    | 'transferLink'
     | 'message'
     | 'time'
     | 'travelOrigin'
@@ -1477,6 +1500,7 @@ export type RequestListTypeInfo = {
     readonly id: string;
     readonly category?: string | null;
     readonly amount?: number | null;
+    readonly transferLink?: string | null;
     readonly message?: string | null;
     readonly time?: Date | null;
     readonly travelOrigin?: string | null;

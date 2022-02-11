@@ -747,6 +747,7 @@ type Request {
   id: ID!
   category: String
   amount: Int
+  transferLink: String
   message: String
   time: String
   travelOrigin: String
@@ -791,6 +792,24 @@ input RequestWhereInput {
   amount_gte: Int
   amount_in: [Int]
   amount_not_in: [Int]
+  transferLink: String
+  transferLink_not: String
+  transferLink_contains: String
+  transferLink_not_contains: String
+  transferLink_starts_with: String
+  transferLink_not_starts_with: String
+  transferLink_ends_with: String
+  transferLink_not_ends_with: String
+  transferLink_i: String
+  transferLink_not_i: String
+  transferLink_contains_i: String
+  transferLink_not_contains_i: String
+  transferLink_starts_with_i: String
+  transferLink_not_starts_with_i: String
+  transferLink_ends_with_i: String
+  transferLink_not_ends_with_i: String
+  transferLink_in: [String]
+  transferLink_not_in: [String]
   message: String
   message_not: String
   message_contains: String
@@ -930,6 +949,8 @@ enum SortRequestsBy {
   category_DESC
   amount_ASC
   amount_DESC
+  transferLink_ASC
+  transferLink_DESC
   message_ASC
   message_DESC
   time_ASC
@@ -953,6 +974,7 @@ enum SortRequestsBy {
 input RequestUpdateInput {
   category: String
   amount: Int
+  transferLink: String
   message: String
   time: String
   travelOrigin: String
@@ -972,6 +994,7 @@ input RequestsUpdateInput {
 input RequestCreateInput {
   category: String
   amount: Int
+  transferLink: String
   message: String
   time: String
   travelOrigin: String
