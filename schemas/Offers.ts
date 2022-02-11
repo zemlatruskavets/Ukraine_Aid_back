@@ -75,17 +75,7 @@ export const Offer = list({
   // fields
   fields: {
     // 1. category of offer
-    category: select({
-      isRequired: true,
-      options: [
-        { label: 'Transport', value: 'Transport' },
-        { label: 'Hosting', value: 'Hosting' },
-        { label: 'Other', value: 'Other' },
-      ],
-      ui: {
-        displayMode: 'segmented-control',
-      },
-    }),
+    category: text(),
     amount: integer(), // 2. monetary amount of offer/request
     message: text(), // 3. optional message to include
     time: timestamp(), // 4. time of proposed exchange

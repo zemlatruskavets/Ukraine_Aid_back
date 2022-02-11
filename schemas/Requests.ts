@@ -70,23 +70,16 @@ export const Request = list({
   // fields
   fields: {
     // 1. category of request
-    category: select({
-      isRequired: true,
-      options: [
-        { label: 'Travel', value: 'Travel' },
-        { label: 'Living', value: 'Living' },
-        { label: 'Other', value: 'Other' },
-      ],
-      ui: {
-        displayMode: 'segmented-control',
-      },
-    }),
+    category: text(),
     amount: integer(), // 2. monetary amount of request
+    transferLink: text(), // link to send money
     message: text(), // 3. optional message to include
     time: timestamp(), // 4. time of proposed exchange
     travelOrigin: text(), // 5. starting location
     travelDestination: text(), // 6. final destination
     numberPeople: integer(), // 7. number of people travelling
+    startDate: text(), // 8. start date of hosting
+    endDate: text(), // 9. end date of hosting
     hostLocation: text(), // 7. location of host home
     // 8. person making the request
     person: relationship({

@@ -774,6 +774,42 @@ export type RequestWhereInput = {
   readonly numberPeople_gte?: Scalars['Int'] | null;
   readonly numberPeople_in?: ReadonlyArray<Scalars['Int'] | null> | null;
   readonly numberPeople_not_in?: ReadonlyArray<Scalars['Int'] | null> | null;
+  readonly startDate?: Scalars['String'] | null;
+  readonly startDate_not?: Scalars['String'] | null;
+  readonly startDate_contains?: Scalars['String'] | null;
+  readonly startDate_not_contains?: Scalars['String'] | null;
+  readonly startDate_starts_with?: Scalars['String'] | null;
+  readonly startDate_not_starts_with?: Scalars['String'] | null;
+  readonly startDate_ends_with?: Scalars['String'] | null;
+  readonly startDate_not_ends_with?: Scalars['String'] | null;
+  readonly startDate_i?: Scalars['String'] | null;
+  readonly startDate_not_i?: Scalars['String'] | null;
+  readonly startDate_contains_i?: Scalars['String'] | null;
+  readonly startDate_not_contains_i?: Scalars['String'] | null;
+  readonly startDate_starts_with_i?: Scalars['String'] | null;
+  readonly startDate_not_starts_with_i?: Scalars['String'] | null;
+  readonly startDate_ends_with_i?: Scalars['String'] | null;
+  readonly startDate_not_ends_with_i?: Scalars['String'] | null;
+  readonly startDate_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly startDate_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly endDate?: Scalars['String'] | null;
+  readonly endDate_not?: Scalars['String'] | null;
+  readonly endDate_contains?: Scalars['String'] | null;
+  readonly endDate_not_contains?: Scalars['String'] | null;
+  readonly endDate_starts_with?: Scalars['String'] | null;
+  readonly endDate_not_starts_with?: Scalars['String'] | null;
+  readonly endDate_ends_with?: Scalars['String'] | null;
+  readonly endDate_not_ends_with?: Scalars['String'] | null;
+  readonly endDate_i?: Scalars['String'] | null;
+  readonly endDate_not_i?: Scalars['String'] | null;
+  readonly endDate_contains_i?: Scalars['String'] | null;
+  readonly endDate_not_contains_i?: Scalars['String'] | null;
+  readonly endDate_starts_with_i?: Scalars['String'] | null;
+  readonly endDate_not_starts_with_i?: Scalars['String'] | null;
+  readonly endDate_ends_with_i?: Scalars['String'] | null;
+  readonly endDate_not_ends_with_i?: Scalars['String'] | null;
+  readonly endDate_in?: ReadonlyArray<Scalars['String'] | null> | null;
+  readonly endDate_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly hostLocation?: Scalars['String'] | null;
   readonly hostLocation_not?: Scalars['String'] | null;
   readonly hostLocation_contains?: Scalars['String'] | null;
@@ -817,6 +853,10 @@ export type SortRequestsBy =
   | 'travelDestination_DESC'
   | 'numberPeople_ASC'
   | 'numberPeople_DESC'
+  | 'startDate_ASC'
+  | 'startDate_DESC'
+  | 'endDate_ASC'
+  | 'endDate_DESC'
   | 'hostLocation_ASC'
   | 'hostLocation_DESC'
   | 'person_ASC'
@@ -830,6 +870,8 @@ export type RequestUpdateInput = {
   readonly travelOrigin?: Scalars['String'] | null;
   readonly travelDestination?: Scalars['String'] | null;
   readonly numberPeople?: Scalars['Int'] | null;
+  readonly startDate?: Scalars['String'] | null;
+  readonly endDate?: Scalars['String'] | null;
   readonly hostLocation?: Scalars['String'] | null;
   readonly person?: PersonRelateToOneInput | null;
 };
@@ -847,6 +889,8 @@ export type RequestCreateInput = {
   readonly travelOrigin?: Scalars['String'] | null;
   readonly travelDestination?: Scalars['String'] | null;
   readonly numberPeople?: Scalars['Int'] | null;
+  readonly startDate?: Scalars['String'] | null;
+  readonly endDate?: Scalars['String'] | null;
   readonly hostLocation?: Scalars['String'] | null;
   readonly person?: PersonRelateToOneInput | null;
 };
@@ -1425,6 +1469,8 @@ export type RequestListTypeInfo = {
     | 'travelOrigin'
     | 'travelDestination'
     | 'numberPeople'
+    | 'startDate'
+    | 'endDate'
     | 'hostLocation'
     | 'person';
   backing: {
@@ -1436,6 +1482,8 @@ export type RequestListTypeInfo = {
     readonly travelOrigin?: string | null;
     readonly travelDestination?: string | null;
     readonly numberPeople?: number | null;
+    readonly startDate?: string | null;
+    readonly endDate?: string | null;
     readonly hostLocation?: string | null;
     readonly person?: string | null;
   };

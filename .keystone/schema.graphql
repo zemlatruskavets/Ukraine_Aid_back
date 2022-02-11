@@ -752,6 +752,8 @@ type Request {
   travelOrigin: String
   travelDestination: String
   numberPeople: Int
+  startDate: String
+  endDate: String
   hostLocation: String
   person: Person
 }
@@ -859,6 +861,42 @@ input RequestWhereInput {
   numberPeople_gte: Int
   numberPeople_in: [Int]
   numberPeople_not_in: [Int]
+  startDate: String
+  startDate_not: String
+  startDate_contains: String
+  startDate_not_contains: String
+  startDate_starts_with: String
+  startDate_not_starts_with: String
+  startDate_ends_with: String
+  startDate_not_ends_with: String
+  startDate_i: String
+  startDate_not_i: String
+  startDate_contains_i: String
+  startDate_not_contains_i: String
+  startDate_starts_with_i: String
+  startDate_not_starts_with_i: String
+  startDate_ends_with_i: String
+  startDate_not_ends_with_i: String
+  startDate_in: [String]
+  startDate_not_in: [String]
+  endDate: String
+  endDate_not: String
+  endDate_contains: String
+  endDate_not_contains: String
+  endDate_starts_with: String
+  endDate_not_starts_with: String
+  endDate_ends_with: String
+  endDate_not_ends_with: String
+  endDate_i: String
+  endDate_not_i: String
+  endDate_contains_i: String
+  endDate_not_contains_i: String
+  endDate_starts_with_i: String
+  endDate_not_starts_with_i: String
+  endDate_ends_with_i: String
+  endDate_not_ends_with_i: String
+  endDate_in: [String]
+  endDate_not_in: [String]
   hostLocation: String
   hostLocation_not: String
   hostLocation_contains: String
@@ -902,6 +940,10 @@ enum SortRequestsBy {
   travelDestination_DESC
   numberPeople_ASC
   numberPeople_DESC
+  startDate_ASC
+  startDate_DESC
+  endDate_ASC
+  endDate_DESC
   hostLocation_ASC
   hostLocation_DESC
   person_ASC
@@ -916,6 +958,8 @@ input RequestUpdateInput {
   travelOrigin: String
   travelDestination: String
   numberPeople: Int
+  startDate: String
+  endDate: String
   hostLocation: String
   person: PersonRelateToOneInput
 }
@@ -933,6 +977,8 @@ input RequestCreateInput {
   travelOrigin: String
   travelDestination: String
   numberPeople: Int
+  startDate: String
+  endDate: String
   hostLocation: String
   person: PersonRelateToOneInput
 }
